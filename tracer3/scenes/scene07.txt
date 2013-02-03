@@ -1,0 +1,49 @@
+lightsource SimpleLightsource { position <2 3 2> radius 0.1 color <10 10 10> } 
+lightsource SimpleLightsource { position <-2 1 1> radius 0.1 color <1 0.5 0> } 
+
+object {
+       shape Plane { origo <0 -2 0> normal <0 1 0> }
+       shader PhongShader {
+	      Kd 1.0 
+	      Kp 0.5
+	      color <1 1 1>
+	      color1 <0.25 0.25 0.25> 
+	      color2 <0.25 0.25 0.25>
+	      scale 1
+	      octaves 5
+	      H 1.2 
+	      type VLFBM
+	      d 5
+	      lacunarity 2.5 
+	      bump_size 0.05
+	      rust_level 0.0
+	      bump
+       }
+}
+
+object {
+       shape Sphere { origin <0 0 0> radius 1 corner1 <-1 -1 -1> corner2 <1 1 1> }
+       shader ChromeRust { 
+	      Kd 1.0 
+	      Kp 0.5
+	      phong_size 25
+	      color1 <0.25 0.25 0.25> 
+	      color2 <0.25 0.25 0.25>
+	      scale 1
+	      octaves 5
+	      H 1.2 
+	      type VLFBM
+	      d 5
+	      lacunarity 2.5 
+	      bump_size 0.05
+	      rust_level 0.5
+	      bump
+       }
+
+       translation hermite_spline {
+			  point <0 0 0> <0 1 0>  0.0
+			  point <0 1 0> <0 0 0>  0.5
+			  point <0 0 0> <0 -1 0> 1.0
+                          loop
+       }
+}

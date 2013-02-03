@@ -1,0 +1,93 @@
+bernsteintest.cpp: In function `int main(int, char**)':
+bernsteintest.cpp:7: no match for `std::ostream& << bernstein_polynomial<3>&' 
+   operator
+/usr/include/c++/3.2.2/bits/ostream.tcc:55: candidates are: 
+   std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, 
+   _Traits>::operator<<(std::basic_ostream<_CharT, 
+   _Traits>&(*)(std::basic_ostream<_CharT, _Traits>&)) [with _CharT = char, 
+   _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:77:                 
+   std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, 
+   _Traits>::operator<<(std::basic_ios<_CharT, 
+   _Traits>&(*)(std::basic_ios<_CharT, _Traits>&)) [with _CharT = char, _Traits 
+   = std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:99:                 
+   std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, 
+   _Traits>::operator<<(std::ios_base&(*)(std::ios_base&)) [with _CharT = char, 
+   _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:171:                 
+   std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, 
+   _Traits>::operator<<(long int) [with _CharT = char, _Traits = 
+   std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:208:                 
+   std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, 
+   _Traits>::operator<<(long unsigned int) [with _CharT = char, _Traits = 
+   std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:146:                 
+   std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, 
+   _Traits>::operator<<(bool) [with _CharT = char, _Traits = 
+   std::char_traits<char>]
+/usr/include/c++/3.2.2/ostream:104:                 std::basic_ostream<_CharT, 
+   _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(short int) [with 
+   _CharT = char, _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/ostream:115:                 std::basic_ostream<_CharT, 
+   _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(short unsigned 
+   int) [with _CharT = char, _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/ostream:119:                 std::basic_ostream<_CharT, 
+   _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(int) [with _CharT 
+   = char, _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/ostream:130:                 std::basic_ostream<_CharT, 
+   _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(unsigned int) 
+   [with _CharT = char, _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:234:                 
+   std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, 
+   _Traits>::operator<<(long long int) [with _CharT = char, _Traits = 
+   std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:272:                 
+   std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, 
+   _Traits>::operator<<(long long unsigned int) [with _CharT = char, _Traits = 
+   std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:298:                 
+   std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, 
+   _Traits>::operator<<(double) [with _CharT = char, _Traits = 
+   std::char_traits<char>]
+/usr/include/c++/3.2.2/ostream:145:                 std::basic_ostream<_CharT, 
+   _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(float) [with 
+   _CharT = char, _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:323:                 
+   std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, 
+   _Traits>::operator<<(long double) [with _CharT = char, _Traits = 
+   std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:348:                 
+   std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, 
+   _Traits>::operator<<(const void*) [with _CharT = char, _Traits = 
+   std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:120:                 
+   std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, 
+   _Traits>::operator<<(std::basic_streambuf<_CharT, _Traits>*) [with _CharT = 
+   char, _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/ostream:251:                 std::basic_ostream<char, 
+   _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const unsigned 
+   char*) [with _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/ostream:246:                 std::basic_ostream<char, 
+   _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const signed 
+   char*) [with _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:622:                 
+   std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, 
+   _Traits>&, const char*) [with _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:572:                 
+   std::basic_ostream<_CharT, _Traits>& 
+   std::operator<<(std::basic_ostream<_CharT, _Traits>&, const char*) [with 
+   _CharT = char, _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/ostream:227:                 std::basic_ostream<char, 
+   _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, unsigned char) 
+   [with _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/ostream:222:                 std::basic_ostream<char, 
+   _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, signed char) 
+   [with _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/bits/ostream.tcc:500:                 
+   std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, 
+   _Traits>&, char) [with _Traits = std::char_traits<char>]
+/usr/include/c++/3.2.2/ostream:211:                 std::basic_ostream<_CharT, 
+   _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, char) [with 
+   _CharT = char, _Traits = std::char_traits<char>]

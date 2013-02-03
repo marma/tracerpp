@@ -1,0 +1,26 @@
+lightsource SimpleLightsource { position <0 0 4> color <10 10 10> } 
+
+object { 
+       shape Plane { origo <0 0 0> normal <0 0 1> }
+       shader CheckerShader { Ka 0.0 Kd 1.0 Kp 0.0 phong_size 20 color1 <1 1 1> color2 <0 0 0> scale 5 }
+}
+
+object {
+       shape Sphere { position <0.45 0 0> radius 0.25 }
+       shader MirrorShader { Ka 0.0 Kd 0.2 Kp 0.5 Km 0.5 phong_size 100 color <1 1 1> }
+}
+
+object {
+       shape Sphere { position <0 0.45 0> radius 0.25 }
+       shader MirrorShader { Ka 0.0 Kd 0.2 Kp 0.5 Km 0.5 phong_size 100 color <1 1 1> }
+}
+
+object {
+       shape Sphere { position <-0.45 0 0> radius 0.25 }
+       shader MirrorShader { Ka 0.0 Kd 0.2 Kp 0.5 Km 0.5 phong_size 100 color <1 1 1> }
+}
+
+object {
+       shape Sphere { position <0 -0.45 0> radius 0.25 }
+       shader MirrorShader { Ka 0.0 Kd 0.2 Kp 0.5 Km 0.5 phong_size 100 color <1 1 1> }
+}

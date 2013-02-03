@@ -1,0 +1,7 @@
+18211: accept()
+18211: accept()
+18211: accept()
+child 18243 terminated!
+18211: accept()
+child 18245 terminated!
+18211: closing server socket

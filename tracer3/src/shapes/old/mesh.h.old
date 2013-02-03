@@ -1,0 +1,39 @@
+#ifndef __MESH_H__
+#define __MESH_H__
+
+#include "../tracer.h"
+
+class Mesh : public tracer::shape {
+public:
+	struct vstruct {
+		vstruct() { v=vt=vn=-1; }
+		int v,vt,vn;
+	};
+
+	struct face {
+		std::list<vstruct> vstr;
+	};
+
+	struct triangle {
+		triangle() {
+			v[0]=v[1]=v[2]=n[0]=n[1]=n[2]=tx[0]=tx[1]=tx[2]=-1;
+		}
+		int v[3],n[3],tx[3];
+	};
+
+	struct quad {
+		int n[4];
+	};
+
+	Mesh();
+	Mesh(std::string file);
+	virtual void intersect(const tracer::ray& r, tracer::intersection_collection& icoll);
+	virtual int inside(const tracer::vector& x);
+	void addVertex(tracer::vector x);
+	void addTriangle(int v1, int v2, int v3, int n1=0, int n2=0, int n3=0, int tx1=0, int tx2=0, int tx3=0);
+
+	std::vector<tracer::vector> vertices, normals, txcoords;
+	std::vector<triangle> triangles;
+};
+
+#endif

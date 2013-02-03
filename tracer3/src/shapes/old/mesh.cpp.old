@@ -1,0 +1,169 @@
+#include <fstream>
+#include "mesh.h"
+
+Mesh::Mesh() {
+}
+
+Mesh::Mesh(std::string file) {
+	char linebuf[1024];
+	std::ifstream in(file.c_str());
+	std::string type;
+
+	while (in >> type) {
+		if (type == "v") {
+			tracer::vector v;
+
+			in >> v.x >> v.y >> v.z;
+
+			vertices.push_back(v);
+		} else if (type == "vn") {
+			tracer::vector n;
+
+			in >> n.x >> n.y >> n.z;
+
+			n = n^1;
+
+			normals.push_back(n);
+		} else if (type == "vt") {
+			tracer::vector t;
+
+			in >> t.x >> t.y;
+
+			txcoords.push_back(t);
+		} else if (type == "f") {
+			face f;
+			
+			while ((in.peek() < 'a' || in.peek() > 'z') && in.peek() != '\n') {
+				char c;
+				vstruct vstr;
+				std::string p;
+
+				in >> vstr.v;
+
+				c = in.get();
+
+				if (in.peek() != '/')
+					in >> vstr.vn;
+
+				c = in.get();
+
+				if (in.peek() != '/' && in.peek() != '\t' && in.peek() != ' ' && in.peek() != '\n' && in.peek() != '\r')
+					in >> vstr.vt;
+
+				f.vstr.insert(f.vstr.end(), vstr);
+			}
+
+			std::list<vstruct>::iterator iter = f.vstr.begin();
+			vstruct p1 = *iter++, p2 = *iter++;
+
+			for (std::list<vstruct>::iterator iter2 = iter; iter2 != f.vstr.end(); iter2++) {
+				vstruct p3 = *iter2;
+
+				addTriangle(p1.v, p2.v, p3.v, p1.vn, p2.vn, p3.vn, p1.vt, p2.vt, p3.vt);
+
+				p2 = p3;
+			}
+		} else {
+			// couldn't figure out what to do, read rest of line and skip
+			in.getline(linebuf, 1024, '\n');
+		}
+	}
+
+	in.close();
+}
+
+void Mesh::intersect(const tracer::ray& r, tracer::intersection_collection& icoll) {
+	for (std::vector<triangle>::iterator iter = triangles.begin(); iter != triangles.end(); iter++) {
+		tracer::vector p0 = vertices[iter->v[0]], p1 = vertices[iter->v[1]], p2 = vertices[iter->v[2]];
+
+		#define EPSILON 0.000001
+	   double det,inv_det,u,v,t;
+
+	   /* find vectors for two edges sharing vert0 */
+	   tracer::vector edge1 = p1 - p0, edge2 = p2 - p0;
+
+	   /* begin calculating determinant - also used to calculate U parameter */
+	   tracer::vector pvec = r.v.cross(edge2);
+
+	   /* if determinant is near zero, ray lies in plane of triangle */
+	   det = edge1*pvec;
+
+	   /* calculate distance from vert0 to ray origin */
+	   tracer::vector tvec = r.p - p0;
+	   inv_det = 1.0/det;
+   
+	   tracer::vector qvec = tvec.cross(edge1);
+      
+		if (det > EPSILON) {
+			u = tvec*pvec;
+
+			if (u < 0.0 || u > det)
+			continue;
+
+			//calculate V parameter and test bounds 
+			//DOT(dir, qvec);
+			v = r.v*qvec;
+			if (v < 0.0 || u + v > det)
+			continue;
+		} else if(det < -EPSILON) {
+			// calculate U parameter and test bounds 
+			//*u = DOT(tvec, pvec);
+			u = tvec*pvec;
+			if (u > 0.0 || u < det)
+			continue;
+
+			// calculate V parameter and test bounds 
+			//*v = DOT(dir, qvec) ;
+			v = r.v*qvec;
+			if (v > 0.0 || u + v < det)
+			continue;
+		} else continue;  // ray is parallell to the plane of the triangle 
+
+		t = edge2*qvec*inv_det;
+
+		if (t < 0) continue;
+
+		u *= inv_det;
+		v *= inv_det;
+		
+
+		tracer::vector n;
+		
+		if (iter->n[0] != -1) {
+			tracer::vector n0 = normals[iter->n[0]], n1 = normals[iter->n[1]], n2 = normals[iter->n[2]];
+			n = (u*n1 + v*n2 + (1-u-v)*n0)^1;
+		} else {
+			n = (edge1^1).cross(edge2^1);
+		}
+
+		tracer::intersection i(r(t), n, t, tracer::intersection::UNKNOWN, u,v);
+
+		icoll.insert(icoll.end(), i);
+	}
+}
+
+int Mesh::inside(const tracer::vector& x) {
+	return 0;
+}
+
+void Mesh::addVertex(tracer::vector x) {
+	vertices.push_back(x);
+}
+
+void Mesh::addTriangle(int v1, int v2, int v3, int n1, int n2, int n3, int tx1, int tx2, int tx3) {
+	triangle t;
+
+	t.v[0] = v1 - 1;
+	t.v[1] = v2 - 1;
+	t.v[2] = v3 - 1;
+
+	t.n[0] = n1 -1;
+	t.n[1] = n2 -1;
+	t.n[2] = n3 -1;
+	
+	t.tx[0] = tx1 - 1;
+	t.tx[1] = tx2 - 1;
+	t.tx[2] = tx3 - 1;
+
+	triangles.push_back(t);
+}

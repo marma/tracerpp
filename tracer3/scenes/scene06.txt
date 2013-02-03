@@ -1,0 +1,70 @@
+lightsource SimpleAreaLightsource { position <0 3 2> radius 0.1 color <10 10 10> } 
+
+object {
+       shape Plane { origo <0 -1 0> normal <0 1 0> }
+       shader PhongShader { Kd 1.0 Kp 0.0 color <1 1 1> }
+}
+
+object {
+       shape Sphere { origo <0 1 1> radius 0.9 }
+       shader GlassShader { Kd 1.0 Kp 1.0 ior 1.1 color1 <1 1 1> color2 <0.5 0.5 0.5> scale 50 type FBM }
+}
+
+object {
+       shader NormalShader { Kd 1.0 Kp 1.0 ior 1.1 color1 <1 1 1> color2 <0 0 0> scale 15 octaves 4 H 1.4 type VLFBM d 0.5 lacunarity 1.8 bump bump_size 0.1 rust_level 0.60 }
+       shape CSG {
+	     type DIFFERENCE
+
+	     object {
+		    shape Sphere { position <0 0 0> radius 1.0 }
+		    shader PhongShader { }
+	     }
+
+	     object {
+		    shape AABox { corner1 <0.1 0.1 0.1> corner2 <1 1 1> }
+		    shader PhongShader { }
+             }
+	     
+	     object {
+		    shape AABox { corner1 <-1 0.1 0.1> corner2 <-0.1 1 1> }
+		    shader PhongShader { }
+             }
+
+	     object {
+		    shape AABox { corner1 <0.1 -1 0.1> corner2 <1 -0.1 1> }
+		    shader PhongShader { }
+             }
+
+	     object {
+		    shape AABox { corner1 <-1 -1 0.1> corner2 <-0.1 -0.1 1> }
+		    shader PhongShader { }
+             }
+
+
+	     object {
+		    shape AABox { corner1 <0.1 0.1 -1> corner2 <1 1 -0.1> }
+		    shader PhongShader { }
+             }
+	     
+	     object {
+		    shape AABox { corner1 <-1 0.1 -1> corner2 <-0.1 1 -0.1> }
+		    shader PhongShader { }
+             }
+
+	     object {
+		    shape AABox { corner1 <0.1 -1 -1> corner2 <1 -0.1 -0.1> }
+		    shader PhongShader { }
+             }
+
+	     object {
+		    shape AABox { corner1 <-1 -1 -1> corner2 <-0.1 -0.1 -0.1> }
+		    shader PhongShader { }
+             }
+
+	     object {
+		    shape Sphere { origin <0 0 0> radius 0.9 }
+		    shader PhongShader { }
+             }
+       }
+}      
+		  

@@ -1,0 +1,21 @@
+lightsource SimpleAreaLightsource { position <0 2 0> radius 0.5 color <5 5 4> } 
+
+object { 
+       shape Plane { origo <0 -0.60 0> normal <0 1 0> }
+       shader PhongShader { Ka 0.0 Kd 1.0 Kp 0.0 phong_size 20 color <0.75 0.75 0.75> }
+}
+	     
+object {
+       shape Sphere { position <0.25 -0.40 0.5> radius 0.2 }
+       shader PhongShader { Ka 0.0 Kd 1.0 Kp 0.0 phong_size 20 color <0.75 0.75 0.75> }
+}
+
+object {
+       shape Sphere { position <0 0 0> radius 0.2 }
+       shader PhongShader { Ka 0.0 Kd 1.0 Kp 0.0 phong_size 20 color <0.75 0.75 0.75> }
+}
+object {
+       shape Sphere { position <-0.25 0.40 -0.5> radius 0.2 }
+       shader PhongShader { Ka 0.0 Kd 1.0 Kp 0.0 phong_size 20 color <0.75 0.75 0.75> }
+}
+

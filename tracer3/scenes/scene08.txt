@@ -1,0 +1,18 @@
+lightsource SimpleAreaLightsource { position <0 1 -2> radius 0.1 color <10 10 10> } 
+lightsource SimpleAreaLightsource { position <2 3 1> radius 0.1 color <10 10 10> } 
+lightsource SimpleAreaLightsource { position <-2 1 1> radius 0.1 color <1 0.5 0> } 
+
+object {
+       shape Plane { origo <0 -1 0> normal <0 1 0> }
+       shader CheckerShader { Kd 1.0 scale 5 color1 <1 1 1> color2 <1 0 0> }
+}
+
+object {
+       shape CSG {
+	     type DIFFERENCE
+	     object { shape Sphere { position <0 0 0> radius 1.0 } }
+	     object { shape Sphere { position <1 0 1> radius 1.5 } }
+       }
+
+       shader GlassShader { Kp 1.0 phong_size 200 ior 1.1 }
+}

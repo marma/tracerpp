@@ -1,0 +1,120 @@
+camera {
+       position <0 0.5 1>
+       look_at <0 0.5 0>
+       focus_at <0 0.5 0>
+       flength 22
+       shutter_speed 0.04
+}
+
+imager {
+       bits 8
+       gamma 0.5
+       gain 1.0
+       dither 0.001
+}
+
+lightsource SimpleLightsource { position <0 0.5 0> color <2 1.5 1> }
+
+
+object {
+       shape Plane { origo <0 -0.9 0> normal <0 1 0> }
+       shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <1 1 1> }
+}
+
+object {
+       shape CSG {
+	     type DIFFERENCE
+
+	     object {
+		    shape AABox { corner1 <-0.9 -0.9 -0.9> corner2 <0.9 0.9 0.9> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+	     
+	     object {
+		    shape CSG {
+			  type UNION
+
+	     object {
+		    shape AABox { corner1 <-2 -2 -0.766666> corner2 <2 2 -0.566666> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+	     object {
+		    shape AABox { corner1 <-2 -2 -0.433333> corner2 <2 2 -0.233333> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+	     object {
+		    shape AABox { corner1 <-2 -2 -0.1> corner2 <2 2 0.1> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+	     object {
+		    shape AABox { corner1 <-2 -2  0.233333> corner2 <2 2 0.433333> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+	     object {
+		    shape AABox { corner1 <-2 -2  0.566666> corner2 <2 2 0.766666> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+
+	     object {
+		    shape AABox { corner1 <-2 -0.766666 -2> corner2 <2 -0.566666 2> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+	     object {
+		    shape AABox { corner1 <-2 -0.433333 -2> corner2 <2 -0.233333 2> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+	     object {
+		    shape AABox { corner1 <-2 -0.1 -2> corner2 <2 0.1 2> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+	     object {
+		    shape AABox { corner1 <-2 0.233333 -2> corner2 <2 0.433333 2> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+	     object {
+		    shape AABox { corner1 <-2 0.566666 -2> corner2 <2 0.766666 2> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+
+	     object {
+		    shape AABox { corner1 <-0.766666 -2 -2> corner2 <-0.566666 2 2> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+	     object {
+		    shape AABox { corner1 <-0.433333 -2 -2> corner2 <-0.233333 2 2> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+	     object {
+		    shape AABox { corner1 <-0.1 -2 -2> corner2 <0.1 2 2> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+	     object {
+		    shape AABox { corner1 <0.233333 -2 -2> corner2 <0.433333 2 2> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+	     object {
+		    shape AABox { corner1 <0.566666 -2 -2> corner2 <0.766666 2 2> }
+		    shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+	     }
+
+       }
+}
+}
+
+       shader PhongShader { Ka 1.0 Kd 1.0 Kp 0.0 color <0.9 0.95 1> }
+}
+
